@@ -23,7 +23,7 @@ export default function Menu(props) {
                 <LinkContainer to="/categoria">
                   <NavDropdown.Item>Tipo de Patrimonio</NavDropdown.Item>
                 </LinkContainer>
-                <NavDropdown.Divider />
+                
                
               </div>
             </NavDropdown>
