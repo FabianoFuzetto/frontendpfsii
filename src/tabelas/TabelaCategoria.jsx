@@ -5,7 +5,7 @@ export default function TabelaCategoria(props) {
 
     function filtrarCategoria(e) {
         const termoBusca = e.currentTarget.value;
-        fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
+        fetch(urlBase +"https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
             .then((resposta) => {
                 return resposta.json()
             })
