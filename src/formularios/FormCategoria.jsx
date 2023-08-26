@@ -19,7 +19,7 @@ export default function FormCategoria(props) {
             //Editar
             console.log(props)
             if (!props.atualizando) {
-                fetch("https://129.146.68.51/aluno14-pfsii/categoria", {
+                fetch("http://129.146.68.51/aluno14-pfsii/categoria", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
