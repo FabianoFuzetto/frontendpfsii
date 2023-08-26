@@ -24,7 +24,7 @@ export default function TelaCadastroCategoria(props) {
         setExibirTabela(false);
     }
     function apagarCategoria(categoria) {
-        fetch(urlBase +"https://129.146.68.51/aluno14-pfsii/categoria", {
+        fetch(urlBase + "/aluno14-pfsii/categoria", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(categoria),
@@ -45,7 +45,7 @@ export default function TelaCadastroCategoria(props) {
             });
     }
     useEffect(() => {
-        fetch(urlBase +"https://129.146.68.51/aluno14-pfsii/categoria", { 
+        fetch(urlBase + "/aluno14-pfsii/categoria", { 
             method: "GET"
         }).then((resposta) => {
             return resposta.json();

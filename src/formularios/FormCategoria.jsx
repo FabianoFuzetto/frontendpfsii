@@ -19,7 +19,7 @@ export default function FormCategoria(props) {
             //Editar
             console.log(props)
             if (!props.atualizando) {
-                fetch(urlBase + "https://129.146.68.51/aluno14-pfsii/categoria", {
+                fetch(urlBase + "/aluno14-pfsii/categoria", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -45,7 +45,7 @@ export default function FormCategoria(props) {
                     })
             }
             else {
-                fetch(urlBase + "https://129.146.68.51/aluno14-pfsii/categoria", {
+                fetch(urlBase + "/aluno14-pfsii/categoria", {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
