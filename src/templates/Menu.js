@@ -16,7 +16,7 @@ export default function Menu(props) {
           <Nav className="me-auto">
             <NavDropdown title="Cadastros" id="basic-nav-dropdown">
               <div>
-                <LinkContainer to="/patrimonio">
+                <LinkContainer to="/patrimonios">
                   <NavDropdown.Item>Patrimônio</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Divider />

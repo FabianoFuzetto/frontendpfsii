@@ -33,7 +33,7 @@ export default function TabelaPatrimonio(props) {
         debugger
         const termoBusca = e.currentTarget.value;
 
-        fetch("https://129.146.68.51/aluno14-pfsii/patrimonio", { method: "GET" })
+        fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", { method: "GET" })
             .then((resposta) => {
                 return resposta.json()
             })

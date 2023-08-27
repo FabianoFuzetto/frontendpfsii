@@ -46,7 +46,7 @@ export default function FormularioPatrimonio(props) {
           window.alert("Erro ao executar a requisição: " + erro.message);
         });
     } else {
-      fetch("https://129.146.68.51/aluno14-pfsii/patrimonio", {
+      fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -85,7 +85,7 @@ export default function FormularioPatrimonio(props) {
   }
 
   useEffect(() => {
-    fetch("https://129.146.68.51/aluno14-pfsii/categoria", {
+    fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", { 
       method: "GET"
     })
       .then((resposta) => resposta.json())
