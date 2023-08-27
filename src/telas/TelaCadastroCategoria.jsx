@@ -15,7 +15,7 @@ export default function TelaCadastroCategoria(props) {
             idCategoria: 0,
             categoria: ""
         }
-    );
+    );   
     
     function prepararCategoriaParaEdicao(categoria) {
         console.log('prepararCategoriaParaEdicao', categoria)
