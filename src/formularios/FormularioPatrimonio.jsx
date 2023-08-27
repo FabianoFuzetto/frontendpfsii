@@ -23,7 +23,7 @@ export default function FormularioPatrimonio(props) {
 
   function gravarDados(patrimonio) {
     if (!props.atualizando) {
-      fetch("https://129.146.68.51/aluno14-pfsii/patrimonio", {
+      fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
