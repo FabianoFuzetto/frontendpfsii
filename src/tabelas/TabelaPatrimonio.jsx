@@ -7,7 +7,7 @@ export default function TabelaPatrimonio(props) {
     function excluirPatrimonio(id) {
         const ListaAtualizada = props.ListaPatrimonio.filter((patrimonio) => patrimonio.id !== id);
         props.setPatrimonio(ListaAtualizada);
-        fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", {
+        fetch("https://129.146.68.51/aluno14-pfsii/", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ export default function TabelaPatrimonio(props) {
         debugger
         const termoBusca = e.currentTarget.value;
 
-        fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", { method: "GET" })
+        fetch("https://129.146.68.51/aluno14-pfsii/patrimonio", { method: "GET" })
             .then((resposta) => {
                 return resposta.json()
             })
