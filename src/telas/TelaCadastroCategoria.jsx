@@ -45,7 +45,7 @@ export default function TelaCadastroCategoria(props) {
             });
     }
     useEffect(() => {
-        fetch("https://129.146.68.51/aluno14-pfsii/categoria", { 
+        fetch("https://129.146.68.51/aluno14-pfsii/categoria", {   
             method: "GET"
         }).then((resposta) => {
             return resposta.json();
