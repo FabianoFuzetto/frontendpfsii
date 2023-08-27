@@ -85,7 +85,7 @@ export default function FormularioPatrimonio(props) {
   }
 
   useEffect(() => {
-    fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", { 
+    fetch("https://129.146.68.51/aluno14-pfsii/categoria", { 
       method: "GET"
     })
       .then((resposta) => resposta.json())
