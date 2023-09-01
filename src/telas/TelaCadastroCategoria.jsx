@@ -13,7 +13,7 @@ export default function TelaCadastroCategoria(props) {
     const [CategoriaEmEdicao, setCategoriaEmEdicao] = useState(
         {
             idCategoria: 0,
-            categoria: ""
+            categoria: ""  
         }
     );       
     
