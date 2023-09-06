@@ -16,7 +16,7 @@ export default function TelaCadastroCategoria(props) {
             categoria: ""  
         }
     );       
-    
+     
     function prepararCategoriaParaEdicao(categoria) {
         console.log('prepararCategoriaParaEdicao', categoria)
         setAtualizando(true);
