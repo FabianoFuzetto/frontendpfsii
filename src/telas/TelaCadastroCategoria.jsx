@@ -3,7 +3,7 @@ import FormCategoria from "../formularios/FormCategoria";
 import TabelaCategoria from "../tabelas/TabelaCategoria";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
+
 
 export default function TelaCadastroCategoria(props) {
     const [exibirTabela, setExibirTabela] = useState(true);
