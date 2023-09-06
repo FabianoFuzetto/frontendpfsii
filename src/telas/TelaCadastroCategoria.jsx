@@ -50,7 +50,7 @@ export default function TelaCadastroCategoria(props) {
         }).then((resposta) => {
             return resposta.json();
         }).then((dados) => {
-            if (Array.isArray(dados)) {
+            if (Array.isArray(dados)) { 
                 setCategoria(dados)
             }
         })
