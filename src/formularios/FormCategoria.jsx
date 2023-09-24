@@ -123,5 +123,5 @@ export default function FormCategoria(props) {
                 </div>
             </Form>
         </>
-    );
+    ); 
 }
