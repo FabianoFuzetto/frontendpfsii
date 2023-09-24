@@ -7,7 +7,7 @@ export default function FormCategoria(props) {
 
     function manipularMudanca(e) {
         const elemForm = e.currentTarget;
-        const id = elemForm.id;
+        const id = elemForm.id; 
         const valor = elemForm.value;
         setCategoria({ ...categoria, [id]: valor });
     }
