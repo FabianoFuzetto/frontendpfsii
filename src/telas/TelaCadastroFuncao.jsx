@@ -27,7 +27,7 @@ export default function TelaCadastroFuncao(props) {
     //editar     
     //Excluir//
     function apagarFuncao(funcao) {
-        fetch(urlBase + "/funcao", {
+        fetch("https://129.146.68.51/aluno14-pfsii/funcao", {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(funcao),
@@ -50,7 +50,7 @@ export default function TelaCadastroFuncao(props) {
             });
     }
     useEffect(() => {
-        fetch(urlBase + "/funcao", {
+        fetch("https://129.146.68.51/aluno14-pfsii/funcao", {
             method: "GET"
         }).then((resposta) => {
             return resposta.json();
