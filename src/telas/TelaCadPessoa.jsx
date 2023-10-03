@@ -57,7 +57,7 @@ export default function TelaCadPessoa(props) {
 
   useEffect(() => {
     fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
-      method: "GET"
+      method: "GET",
     })
       .then((resposta) => resposta.json())
       .then((dados) => {
@@ -69,6 +69,8 @@ export default function TelaCadPessoa(props) {
         console.error("Erro ao obter os pessoas:", erro);
       });
   }, []);
+
+
   return (
     <Pagina>
       <Container>
