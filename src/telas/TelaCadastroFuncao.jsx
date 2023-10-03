@@ -3,7 +3,6 @@ import FormFuncao from "../formularios/FormFuncao";
 import TabelaFuncao from "../tabelas/TabelaFuncao";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
 
 export default function TelaCadastroFuncao(props) {
     const [exibirTabela, setExibirTabela] = useState(true);

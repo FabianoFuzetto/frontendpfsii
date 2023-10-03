@@ -1,6 +1,6 @@
 import { useState } from "react"; // Importar o hook useState
 import { Button, Container, Form, Table, Row, Modal } from "react-bootstrap";
-//import { urlBase } from "../utilitarios/definicoes";
+
 import moment from "moment";
 
 export default function TabelaPessoa(props) {

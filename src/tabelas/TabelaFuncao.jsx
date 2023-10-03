@@ -1,5 +1,5 @@
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
+
 export default function TabelaFuncao(props) {
 
     function filtarFuncao(e) {

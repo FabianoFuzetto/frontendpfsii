@@ -3,7 +3,7 @@ import Pagina from "../templates/Pagina";
 import FormularioPatrimonio from "../formularios/FormularioPatrimonio";
 import TabelaPatrimonio from "../tabelas/TabelaPatrimonio";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
+
 
 export default function TelaCadastroPatrimonio(props) {
 

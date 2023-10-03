@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import InputMask from "react-input-mask";
-import { urlBase } from "../utilitarios/definicoes";
+
 import moment from "moment";
 
 

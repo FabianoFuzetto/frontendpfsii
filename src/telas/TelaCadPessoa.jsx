@@ -3,7 +3,7 @@ import FormPessoa from "../formularios/FormPessoa.jsx";
 import TabelaPessoa from "../tabelas/TabelaPessoa.jsx";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-//import { urlBase } from '../utilitarios/definicoes'
+
 
 export default function TelaCadPessoa(props) {
   const [exibirTabela, setExibirTabela] = useState(true);

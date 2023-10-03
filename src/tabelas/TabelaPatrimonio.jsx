@@ -1,6 +1,6 @@
 //import { useState } from "react";
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
+
 import moment from 'moment';
 export default function TabelaPatrimonio(props) {
 

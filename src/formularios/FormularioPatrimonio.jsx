@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Form, Row, Col, InputGroup, Button } from "react-bootstrap";
-import { urlBase } from "../utilitarios/definicoes";
+
 import moment from "moment";
 
 export default function FormularioPatrimonio(props) {
