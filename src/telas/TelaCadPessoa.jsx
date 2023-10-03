@@ -1,9 +1,9 @@
 import Pagina from "../templates/Pagina";
-import FormPessoa from "../formularios/FormPessoa";
-import TabelaPessoa from "../tabelas/TabelaPessoa";
+import FormPessoa from "../formularios/FormPessoa.jsx";
+import TabelaPessoa from "../tabelas/TabelaPessoa.jsx";
 import { useState, useEffect } from "react";
 import { Alert, Container } from "react-bootstrap";
-import { urlBase } from '../utilitarios/definicoes'
+//import { urlBase } from '../utilitarios/definicoes'
 
 export default function TelaCadPessoa(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
@@ -58,16 +58,16 @@ export default function TelaCadPessoa(props) {
   useEffect(() => {
     fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
       method: "GET"
-    }).then((resposta) => {
-      return resposta.json();
-    }).then((dados) => {
-      if (Array.isArray(dados)) {
-        setPessoa(dados)
-      }
     })
-    .catch((erro) => {
-      console.error("Erro ao obter os pessoas:", erro);
-    });
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        if (Array.isArray(dados)) {
+          setPessoa(dados);
+        }
+      })
+      .catch((erro) => {
+        console.error("Erro ao obter os pessoas:", erro);
+      });
   }, []);
   return (
     <Pagina>
