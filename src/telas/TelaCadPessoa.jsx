@@ -56,12 +56,15 @@ export default function TelaCadPessoa(props) {
   }
 
   useEffect(() => {
+    debugger
     fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
       method: "GET",
     })
       .then((resposta) => resposta.json())
       .then((dados) => {
+       
         if (Array.isArray(dados)) {
+          
           setPessoa(dados);
         }
       })

@@ -346,15 +346,6 @@ export default function FormPessoa(props) {
           </Col>
           <Col className="col-2">
             <Form.Group>
-              <Form.Label>Senha:</Form.Label>
-              <Form.Control
-                type="password"
-                value={pessoa.senha}
-                placeholder="Senha de acesso"
-                id="senha"
-                onChange={manipularMudanca}
-                required
-              />
               <Form.Control.Feedback type="invalid">
                 Por favor, informe o e-mail!.
               </Form.Control.Feedback>
