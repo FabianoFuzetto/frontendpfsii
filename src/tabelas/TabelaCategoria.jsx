@@ -1,6 +1,25 @@
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
-
+import SearchBar from '../Componentes/SearchBar';
 export default function TabelaCategoria(props) {
+
+    useEffect(() => {
+        // Função para realizar a busca inicial
+        const buscarCategoria = () => {
+          fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
+            .then((resposta) => resposta.json())
+            .then((listaCategoria) => {
+              if (Array.isArray(listaCategoria)) {
+                setSearchResults(listaCategoria);
+              }
+            });
+        };
+    
+        // Chama a busca inicial
+        buscarCategoria();
+      }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
+
+
+    
 
 
     function filtrarCategoria(e) {
