@@ -21,8 +21,7 @@ export default function TabelaCategoria(props) {
         buscarCategoria();
     }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
 
-    function filtrarCategoria(e) {
-        const termoBusca = e.currentTarget.value;
+    function filtrarCategoria(termoBusca) {
         fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
             .then((resposta) => resposta.json())
             .then((listaCategoria) => {
@@ -30,7 +29,7 @@ export default function TabelaCategoria(props) {
                     const resultadoBusca = listaCategoria.filter((categoria) =>
                         categoria.nomecategoria.toLowerCase().includes(termoBusca.toLowerCase())
                     );
-                    setSearchResults(resultadoBusca);  // Atualize diretamente o estado local
+                    setSearchResults(resultadoBusca);
                 }
             });
     }
