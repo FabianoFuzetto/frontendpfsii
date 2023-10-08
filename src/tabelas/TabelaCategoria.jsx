@@ -7,20 +7,20 @@ export default function TabelaCategoria(props) {
     useEffect(() => {
         // Função para realizar a busca inicial
         const buscarCategoria = () => {
-          fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
-            .then((resposta) => resposta.json())
-            .then((listaCategoria) => {
-              if (Array.isArray(listaCategoria)) {
-                setSearchResults(listaCategoria);
-              }
-            });
+            fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
+                .then((resposta) => resposta.json())
+                .then((listaCategoria) => {
+                    if (Array.isArray(listaCategoria)) {
+                        setSearchResults(listaCategoria);
+                    }
+                });
         };
-    
+
         // Chama a busca inicial
         buscarCategoria();
-      }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
+    }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
 
-   
+
     function filtrarCategoria(e) {
         const termoBusca = e.currentTarget.value;
         fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
@@ -36,12 +36,13 @@ export default function TabelaCategoria(props) {
     }
     return (
         <Container>
-            <Container>
+
             <Row className="col-4">
-        {/* Adicione a barra de pesquisa aqui */}
-        <SearchBar onSearch={filtrarCategoria} />
-      </Row>
-            </Container>
+                {/* Adicione a barra de pesquisa aqui */}
+                <SearchBar onSearch={filtrarCategoria} />
+            
+            </Row>
+            <Table striped bordered hover className="shadow-lg"></Table>
             <div className="table-responsive">
                 <Table striped bordered hover className="shadow-lg">
                     <thead>
