@@ -1,6 +1,7 @@
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
 import SearchBar from '../Componentes/SearchBar';
 export default function TabelaCategoria(props) {
+    const [searchResults, setSearchResults] = useState(props.listaCategoria || []);
 
     useEffect(() => {
         // Função para realizar a busca inicial
@@ -18,10 +19,7 @@ export default function TabelaCategoria(props) {
         buscarCategoria();
       }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
 
-
-    
-
-
+   
     function filtrarCategoria(e) {
         const termoBusca = e.currentTarget.value;
         fetch("https://129.146.68.51/aluno14-pfsii/categoria", { method: "GET" })
@@ -38,14 +36,10 @@ export default function TabelaCategoria(props) {
     return (
         <Container>
             <Container>
-                <Row className="col-4">
-                    <Form.Control type="text"
-                        id="termoBusca"
-                        onChange={filtrarCategoria}
-                        className="my-2"
-                        placeholder="Pesquisar..." aria-label="Search"
-                    />
-                </Row>
+            <Row className="col-4">
+        {/* Adicione a barra de pesquisa aqui */}
+        <SearchBar onSearch={filtrarCategoria} />
+      </Row>
             </Container>
             <div className="table-responsive">
                 <Table striped bordered hover className="shadow-lg">
