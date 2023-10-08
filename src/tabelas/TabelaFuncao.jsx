@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Container, Table, Form, Row } from 'react-bootstrap';
-import SearchBar from './SearchBar'; // Importe o componente SearchBar
-
+import SearchBar from '../Componentes/SearchBar';
 export default function TabelaFuncao(props) {
   const [searchResults, setSearchResults] = useState(props.listaFuncao || []);
 
