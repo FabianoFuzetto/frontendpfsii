@@ -1,5 +1,6 @@
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
 import SearchBar from '../Componentes/SearchBar';
+import React, { useState, useEffect } from 'react';
 export default function TabelaCategoria(props) {
     const [searchResults, setSearchResults] = useState(props.listaCategoria || []);
 
