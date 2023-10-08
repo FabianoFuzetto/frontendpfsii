@@ -68,3 +68,14 @@
 .carousel-control-next-icon {
     filter: invert(100%); /* Isso inverte a cor da seta para a cor oposta */
 }
+
+
+/*barra de busca*/
+input {
+  padding: 5px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 5px;
+}
