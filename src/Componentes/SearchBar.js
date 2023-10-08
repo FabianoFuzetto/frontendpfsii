@@ -11,7 +11,7 @@ const SearchBar = ({ onSearch }) => {
     <div>
       <input
         type="text"
-        placeholder="Pesquisar..."
+        placeholder="Pesquisar Componentizado..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
