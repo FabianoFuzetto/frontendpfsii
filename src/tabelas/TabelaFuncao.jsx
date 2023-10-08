@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Table, Form, Row } from 'react-bootstrap';
-import SearchBar from './Componentes'; // Importe o componente SearchBar
+import SearchBar from './SearchBar'; // Importe o componente SearchBar
 
 export default function TabelaFuncao(props) {
   const [searchResults, setSearchResults] = useState(props.listaFuncao || []);
+
+  useEffect(() => {
+    // Função para realizar a busca inicial
+    const buscarFuncoes = () => {
+      fetch("https://129.146.68.51/aluno14-pfsii/funcao", { method: "GET" })
+        .then((resposta) => resposta.json())
+        .then((listaFuncao) => {
+          if (Array.isArray(listaFuncao)) {
+            setSearchResults(listaFuncao);
+          }
+        });
+    };
+
+    // Chama a busca inicial
+    buscarFuncoes();
+  }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
 
   function filtarFuncao(term) {
     const termoBusca = term;
