@@ -63,10 +63,10 @@ export default function TabelaPessoa(props) {
         <Table striped bordered hover className="shadow-lg">
           <thead>
             <tr>
-              
+
               <th>Nome</th>
               <th>Data Nasc.</th>
-             {/*<th>Cargo</th>*/} 
+              {/*<th>Cargo</th>*/}
               <th>Email</th>
               <th>Celular</th>
               <th>Editar/Excluir/Visualizar</th>
@@ -75,10 +75,10 @@ export default function TabelaPessoa(props) {
           <tbody>
             {props.listaPessoa?.map((pessoa) => (
               <tr key={pessoa.cpf}>
-               
+
                 <td>{pessoa.nome}</td>
                 <td>{moment(pessoa.dataNasc).format("DD/MM/YYYY")}</td>
-                 {/*<td>{pessoa.funcaomembro}</td>*/} 
+                {/*<td>{pessoa.funcaomembro}</td>*/}
                 <td>{pessoa.email}</td>
                 <td>{pessoa.celular}</td>
                 <td>

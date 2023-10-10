@@ -1,8 +1,28 @@
 //import { useState } from "react";
 import { Button, Container, Table, Form, Row } from "react-bootstrap";
-
+import SearchBar from '../Componentes/SearchBar';
 import moment from 'moment';
 export default function TabelaPatrimonio(props) {
+    const [searchResults, setSearchResults] = useState(props.listaPatrimonio || []);
+
+
+    useEffect(() => {
+        // Função para realizar a busca inicial
+        const buscarPatrimonio = () => {
+            fetch("https://129.146.68.51/aluno14-pfsii/funcao", { method: "GET" })
+                .then((resposta) => resposta.json())
+                .then((listaFuncao) => {
+                    if (Array.isArray(listaFuncao)) {
+                        setSearchResults(listaFuncao);
+                    }
+                });
+        };
+
+        // Chama a busca inicial
+        buscarPatrimonio();
+    }, []); // O array vazio [] faz com que o useEffect seja executado apenas uma vez, equivalente ao componentDidMount
+
+
 
     function excluirPatrimonio(id) {
         const ListaAtualizada = props.ListaPatrimonio.filter((patrimonio) => patrimonio.id !== id);
@@ -48,13 +68,12 @@ export default function TabelaPatrimonio(props) {
     }
     return (
         <Container>
-            <Container>
-                <Row className="col-4">
-                    <Form.Control className="my-2" id="termoBusca" onChange={filtrarPatrimonios} type="text"
-                        placeholder="Pesquisar..." aria-label="Search" />
-                </Row>
-            </Container>
+            <Row className="col-4">
+                {/* Adicione a barra de pesquisa aqui */}
+                <SearchBar onSearch={filtrarPatrimonios} />
+            </Row>
             <Table striped bordered hover className="shadow-lg">
+
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -77,7 +96,7 @@ export default function TabelaPatrimonio(props) {
                                 <td>{moment(patrimonio.dataPatrimonio).format('DD/MM/YYYY')}</td>
                                 <td>{patrimonio.ValorDoPatrimonio}</td>
                                 <td>{patrimonio.Condicao}</td>
-                                <td style={{whiteSpace: "pre-wrap",  maxWidth: "300px",overflow: "auto" }} >{patrimonio.Descricao}</td>
+                                <td style={{ whiteSpace: "pre-wrap", maxWidth: "300px", overflow: "auto" }} >{patrimonio.Descricao}</td>
                                 <td>{patrimonio.Codigo}</td>
                                 <td>
                                     <Button
@@ -113,13 +132,18 @@ export default function TabelaPatrimonio(props) {
                     }
                 </tbody>
             </Table>
-            {props.ListaPatrimonio && props.ListaPatrimonio.length === 0 && (
-                <p className="text-center my-4">Nenhum patrimônio cadastrado.</p>
+            {searchResults.length === 0 && (
+                <p className="text-center my-4">Nenhuma função encontrada.</p>
             )}
             <div className="d-flex justify-content-end mb-5">
-                <Button variant="btn btn-outline-success" className="mt-3" onClick={() => {
-                    props.exibirTabela(false);
-                }}>
+                <Button
+                    variant="btn btn-outline-success"
+                    className="mt-3"
+                    onClick={() => {
+                        props.exibirTabela(false);
+                    }}
+                >
+
                     Cadastrar
                 </Button>
             </div>
