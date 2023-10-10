@@ -18,7 +18,7 @@ export default function TabelaPatrimonio(props) {
     };
 
     buscarPatrimonio();
-  }, [props.listaPatrimonio]);
+  }, []);
 
   function excluirPatrimonio(id) {
     const ListaAtualizada = searchResults.filter((patrimonio) => patrimonio.id !== id);
@@ -47,7 +47,7 @@ export default function TabelaPatrimonio(props) {
   function filtrarPatrimonios(e) {
     const termoBusca = e.currentTarget.value.toLowerCase();
 
-    const resultadoBusca = props.listaPatrimonio.filter(
+    const resultadoBusca = searchResults.filter(
       (patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca)
     );
 
@@ -142,4 +142,3 @@ export default function TabelaPatrimonio(props) {
     </Container>
   );
 }
- 
