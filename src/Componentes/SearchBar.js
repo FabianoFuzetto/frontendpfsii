@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './CSS/Estilo.css';
+import './styles.css';
 
 
 const SearchBar = ({ onSearch }) => {
