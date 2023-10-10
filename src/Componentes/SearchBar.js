@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
     <div>
       <input className="input"
         type="text"
-        placeholder="Pesquisar Componentizado..."
+        placeholder="Pesquisa Comp..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
