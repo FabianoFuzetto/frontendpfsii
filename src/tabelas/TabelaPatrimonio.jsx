@@ -45,16 +45,13 @@ export default function TabelaPatrimonio(props) {
     }
 
     function filtrarPatrimonios(e) {
-        const termoBusca = e.currentTarget.value;
+        const termoBusca = e.currentTarget.value.toLowerCase();
 
-        fetch("https://129.146.68.51/aluno14-pfsii/patrimonios", { method: "GET" })
-            .then((resposta) => resposta.json())
-            .then((ListaPatrimonio) => {
-                if (Array.isArray(ListaPatrimonio)) {
-                    const resultadoBusca = ListaPatrimonio.filter((patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca.toLowerCase()));
-                    setSearchResults(resultadoBusca);
-                }
-            });
+        const resultadoBusca = props.listaPatrimonio.filter(
+            (patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca)
+        );
+
+        setSearchResults(resultadoBusca);
     }
 
     return (
