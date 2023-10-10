@@ -1,4 +1,8 @@
-import { Alert } from "react-bootstrap";
+import Pagina from "../templates/Pagina";
+import frontalslide1 from "../Imagens/frontalslide1.png"
+import frontalslide2 from "../Imagens/frontalslide2.png"
+import frontalslide3 from "../Imagens/frontalslide3.png"
+import Carousel from 'react-bootstrap/Carousel';
 import Pagina from "../templates/Pagina";
 
 
