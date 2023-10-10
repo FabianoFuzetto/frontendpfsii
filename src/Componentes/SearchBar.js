@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './CSS/Estilo.css';
+
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
