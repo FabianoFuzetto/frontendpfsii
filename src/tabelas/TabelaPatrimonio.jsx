@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Container, Table, Form, Row } from "react-bootstrap";
+import { Button, Container, Table, Row } from "react-bootstrap";
 import SearchBar from '../Componentes/SearchBar';
 import moment from 'moment';
 
@@ -21,9 +21,10 @@ export default function TabelaPatrimonio(props) {
     }, []);
 
     function excluirPatrimonio(id) {
-        const ListaAtualizada = props.listaPatrimonio.filter((patrimonio) => patrimonio.id !== id);
-        props.setPatrimonio(ListaAtualizada);
-        fetch(`https://129.146.68.51/aluno14-pfsii/${id}`, {
+        const ListaAtualizada = searchResults.filter((patrimonio) => patrimonio.id !== id);
+        setSearchResults(ListaAtualizada);
+
+        fetch("https://129.146.68.51/aluno14-pfsii/", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -52,7 +53,7 @@ export default function TabelaPatrimonio(props) {
             .then((ListaPatrimonio) => {
                 if (Array.isArray(ListaPatrimonio)) {
                     const resultadoBusca = ListaPatrimonio.filter((patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca.toLowerCase()));
-                    props.setPatrimonio(resultadoBusca);
+                    setSearchResults(resultadoBusca);
                 }
             });
     }
@@ -76,31 +77,33 @@ export default function TabelaPatrimonio(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {searchResults.map((patrimonio) => (
-                        <tr key={patrimonio.idPatrimonio}>
-                            <td>{patrimonio.idPatrimonio}</td>
-                            <td>{patrimonio.nomeDoPatrimonio}</td>
-                            <td>{moment(patrimonio.dataPatrimonio).format('DD/MM/YYYY')}</td>
-                            <td>{patrimonio.ValorDoPatrimonio}</td>
-                            <td>{patrimonio.Condicao}</td>
-                            <td style={{ whiteSpace: "pre-wrap", maxWidth: "300px", overflow: "auto" }}>{patrimonio.Descricao}</td>
-                            <td>{patrimonio.Codigo}</td>
-                            <td>
-                                <Button
-                                    onClick={() => { props.editarPatrimonio(patrimonio) }}
-                                    title="Editar" variant="btn btn-outline-primary">
-                                    {/* ícone do lápis */}
-                                </Button>{' '}
-                                <Button title="Excluir" variant="btn btn-outline-danger" onClick={() => {
-                                    if (window.confirm('Confirma a exclusão desse patrimônio ? ')) {
-                                        excluirPatrimonio(patrimonio.id)
-                                    }
-                                }}>
-                                    {/* ícone da lixeira */}
-                                </Button>
-                            </td>
-                        </tr>
-                    ))}
+                    {searchResults.map((patrimonio) => {
+                        return (
+                            <tr key={patrimonio.id}>
+                                <td>{patrimonio.id}</td>
+                                <td>{patrimonio.nomeDoPatrimonio}</td>
+                                <td>{moment(patrimonio.dataPatrimonio).format('DD/MM/YYYY')}</td>
+                                <td>{patrimonio.ValorDoPatrimonio}</td>
+                                <td>{patrimonio.Condicao}</td>
+                                <td style={{ whiteSpace: "pre-wrap", maxWidth: "300px", overflow: "auto" }}>{patrimonio.Descricao}</td>
+                                <td>{patrimonio.Codigo}</td>
+                                <td>
+                                    <Button
+                                        onClick={() => { props.editarPatrimonio(patrimonio) }}
+                                        title="Editar" variant="btn btn-outline-primary">
+                                        {/* Ícone de edição */}
+                                    </Button>{' '}
+                                    <Button title="Excluir" variant="btn btn-outline-danger" onClick={() => {
+                                        if (window.confirm('Confirma a exclusão desse patrimônio?')) {
+                                            excluirPatrimonio(patrimonio.id)
+                                        }
+                                    }}>
+                                        {/* Ícone de exclusão */}
+                                    </Button>
+                                </td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </Table>
             {searchResults.length === 0 && (
