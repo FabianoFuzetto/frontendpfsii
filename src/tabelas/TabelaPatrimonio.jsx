@@ -44,11 +44,9 @@ export default function TabelaPatrimonio(props) {
       });
   }
 
-  function filtrarPatrimonios(e) {
-    const termoBusca = e.currentTarget.value.toLowerCase();
-
+  function filtrarPatrimonios(termoBusca) {
     const resultadoBusca = searchResults.filter(
-      (patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca)
+      (patrimonio) => patrimonio.nomeDoPatrimonio.toLowerCase().includes(termoBusca.toLowerCase())
     );
 
     setSearchResults(resultadoBusca);
