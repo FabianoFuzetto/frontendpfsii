@@ -1,15 +1,14 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import InputMask from "react-input-mask";
-
 import moment from "moment";
-
 
 export default function FormPessoa(props) {
   const [validado, setValidado] = useState(false);
   const [pessoa, setPessoa] = useState({
     ...props.pessoa,
     dataNasc: moment(props.pessoa.dataNasc).format("YYYY-MM-DD"),
+    funcoes: [] // Array to store multiple roles
   });
   const [funcoes, setFuncoes] = useState([]);
 
@@ -17,7 +16,6 @@ export default function FormPessoa(props) {
     const elemForm = e.currentTarget;
     const { id, value } = elemForm;
 
-    // formatação da data usando o moment:
     if (id === "dataNasc") {
       setPessoa({ ...pessoa, [id]: moment(value).format("YYYY-MM-DD") });
     } else {
@@ -25,62 +23,55 @@ export default function FormPessoa(props) {
     }
   }
 
+  function adicionarFuncao() {
+    const selectedRoleId = document.getElementById("cargo_id").value;
+    const selectedRole = funcoes.find((funcao) => funcao.idCargo === parseInt(selectedRoleId, 10));
+
+    if (selectedRole && !pessoa.funcoes.some((role) => role.idCargo === selectedRole.idCargo)) {
+      setPessoa({
+        ...pessoa,
+        funcoes: [...pessoa.funcoes, selectedRole]
+      });
+    }
+  }
+
+  function removerFuncao(idCargo) {
+    const updatedRoles = pessoa.funcoes.filter((role) => role.idCargo !== idCargo);
+    setPessoa({
+      ...pessoa,
+      funcoes: updatedRoles
+    });
+  }
+
   function manipulaSubmissao(evento) {
     const form = evento.currentTarget;
     if (form.checkValidity()) {
-      if (!props.atualizando) {
-        fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(pessoa)
+      const url = `https://129.146.68.51/aluno14-pfsii/pessoa${props.atualizando ? `/${pessoa.id}` : ''}`;
+      const method = props.atualizando ? "PUT" : "POST";
+
+      fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(pessoa)
+      })
+        .then((resposta) => resposta.json())
+        .then((dados) => {
+          if (dados.status) {
+            props.setModoEdicao(false);
+            let novaLista = props.listaPessoa;
+            novaLista.push(pessoa);
+            props.setPessoa(novaLista);
+            props.exibirTabela(true);
+            window.location.reload();
+          }
+          window.alert(dados.mensagem);
         })
-          .then((resposta) => {
-            return resposta.json();
-          })
-          .then((dados) => {
-            if (dados.status) {
-              props.setModoEdicao(false);
-              let novaLista = props.listaPessoa;
-              novaLista.push(pessoa);
-              props.setPessoa(novaLista);
-              props.exibirTabela(true);
-              window.location.reload();
-            }
-            window.alert(dados.mensagem);
-          })
-          .catch((erro) => {
-            window.alert("Erro ao executar a requisição:" + erro.message);
-          });
-      } else {
-        debugger;
-        fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(pessoa)
-        })
-          .then((resposta) => {
-            return resposta.json();
-          })
-          .then((dados) => {
-            if (dados.status) {
-              props.setModoEdicao(false);
-              let novaLista = props.listaPessoa;
-              novaLista.push(pessoa);
-              props.setPessoa(novaLista);
-              props.exibirTabela(true);
-              setPessoa(props.pessoa);
-              window.location.reload();
-            }
-            window.alert(dados.mensagem);
-          })
-          .catch((erro) => {
-            window.alert("Erro ao executar a requisição: " + erro.message);
-          });
-      }
+        .catch((erro) => {
+          window.alert("Erro ao executar a requisição:" + erro.message);
+        });
+
       setValidado(false);
     } else {
       setValidado(true);
@@ -112,6 +103,8 @@ export default function FormPessoa(props) {
         validated={validado}
         onSubmit={manipulaSubmissao}
       >
+        
+        
         <Row className="justify-content-center " >
           <Col className="col-3">
             <Form.Group >
@@ -324,26 +317,52 @@ export default function FormPessoa(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
+
+                 
           <Col className="col-2 mb-4">
-            <div >
+            <div>
               <label htmlFor="inputFuncao" className="form-label">
                 Função:
               </label>
-              <Form.Select
-                id="cargo_id"
-                className="form-control"
-                onChange={manipularMudanca}
-                required
-              >
+              <Form.Select id="cargo_id" className="form-control" required>
                 <option value="">Selecione</option>
                 {funcoes.map((funcao) => (
-                  <option key={funcao.idCargo} value={funcao.idCargo} >
+                  <option key={funcao.idCargo} value={funcao.idCargo}>
                     {funcao.funcaomembro}
                   </option>
                 ))}
               </Form.Select>
+              <Button
+                variant="btn btn-outline-primary mt-2"
+                type="button"
+                onClick={adicionarFuncao}
+              >
+                Adicionar Função
+              </Button>
+              <div className="mt-2">
+                {pessoa.funcoes.map((role) => (
+                  <div key={role.idCargo}>
+                    {role.funcaomembro}{" "}
+                    <Button
+                      variant="btn btn-outline-danger btn-sm"
+                      type="button"
+                      onClick={() => removerFuncao(role.idCargo)}
+                    >
+                      Remover
+                    </Button>
+                  </div>
+                ))}
+              </div>
             </div>
           </Col>
+          
+          <div className="d-flex justify-content-end mb-2 mt-5">
+            
+          </div>
+                 
+                   
+
+
           <Col className="col-2">
             <Form.Group>
               <Form.Control.Feedback type="invalid">
@@ -351,7 +370,7 @@ export default function FormPessoa(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
-          
+
           <div className="d-flex justify-content-end mb-2 mt-5">
             <div>
               <Button
@@ -369,6 +388,8 @@ export default function FormPessoa(props) {
             </div>
           </div>
         </Row>
+
+
       </Form>
     </>
   );
