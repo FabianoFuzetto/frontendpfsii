@@ -103,67 +103,8 @@ export default function FormPessoa(props) {
         validated={validado}
         onSubmit={manipulaSubmissao}
       >
-        <Row className="justify-content-center ">
-          {/* ... existing code ... */}
-          <Col className="col-2 mb-4">
-            <div>
-              <label htmlFor="inputFuncao" className="form-label">
-                Função:
-              </label>
-              <Form.Select id="cargo_id" className="form-control" required>
-                <option value="">Selecione</option>
-                {funcoes.map((funcao) => (
-                  <option key={funcao.idCargo} value={funcao.idCargo}>
-                    {funcao.funcaomembro}
-                  </option>
-                ))}
-              </Form.Select>
-              <Button
-                variant="btn btn-outline-primary mt-2"
-                type="button"
-                onClick={adicionarFuncao}
-              >
-                Adicionar Função
-              </Button>
-              <div className="mt-2">
-                {pessoa.funcoes.map((role) => (
-                  <div key={role.idCargo}>
-                    {role.funcaomembro}{" "}
-                    <Button
-                      variant="btn btn-outline-danger btn-sm"
-                      type="button"
-                      onClick={() => removerFuncao(role.idCargo)}
-                    >
-                      Remover
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Col>
-          {/* ... existing code ... */}
-          <div className="d-flex justify-content-end mb-2 mt-5">
-            <div>
-              <Button
-                variant="btn btn-outline-danger"
-                type="button"
-                onClick={() => {
-                  props.exibirTabela(true);
-                }}
-              >
-                Voltar
-              </Button>{" "}
-              <Button type="submit" variant="btn btn-outline-success">
-                {props.atualizando ? "Atualizar" : "Cadastrar"}
-              </Button>
-            </div>
-          </div>
-        </Row>
-        className="shadow-lg p-3 mt-4 bg-white rounded"
-        noValidate
-        validated={validado}
-        onSubmit={manipulaSubmissao}
-      
+        
+        
         <Row className="justify-content-center " >
           <Col className="col-3">
             <Form.Group >
@@ -377,24 +318,49 @@ export default function FormPessoa(props) {
             </Form.Group>
           </Col>
           <Col className="col-2 mb-4">
-            <div >
+          <Row>
+          {/* ... existing code ... */}
+          <Col className="col-2 mb-4">
+            <div>
               <label htmlFor="inputFuncao" className="form-label">
                 Função:
               </label>
-              <Form.Select
-                id="cargo_id"
-                className="form-control"
-                onChange={manipularMudanca}
-                required
-              >
+              <Form.Select id="cargo_id" className="form-control" required>
                 <option value="">Selecione</option>
                 {funcoes.map((funcao) => (
-                  <option key={funcao.idCargo} value={funcao.idCargo} >
+                  <option key={funcao.idCargo} value={funcao.idCargo}>
                     {funcao.funcaomembro}
                   </option>
                 ))}
               </Form.Select>
+              <Button
+                variant="btn btn-outline-primary mt-2"
+                type="button"
+                onClick={adicionarFuncao}
+              >
+                Adicionar Função
+              </Button>
+              <div className="mt-2">
+                {pessoa.funcoes.map((role) => (
+                  <div key={role.idCargo}>
+                    {role.funcaomembro}{" "}
+                    <Button
+                      variant="btn btn-outline-danger btn-sm"
+                      type="button"
+                      onClick={() => removerFuncao(role.idCargo)}
+                    >
+                      Remover
+                    </Button>
+                  </div>
+                ))}
+              </div>
             </div>
+          </Col>
+          {/* ... existing code ... */}
+          <div className="d-flex justify-content-end mb-2 mt-5">
+            
+          </div>
+        </Row>
           </Col>
           <Col className="col-2">
             <Form.Group>
