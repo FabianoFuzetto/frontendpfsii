@@ -25,12 +25,13 @@ export default function TelaCadPessoa(props) {
       cep: "",
       email: "",
       celular: ""
+      
     });
 
   function prepararParaEdicao(pessoa) {
     setAtualizando(true);
     setPessoaEmEdicao(pessoa);
-    setExibirTabela(false);
+    setExibirTabela(false); 
   }
 
   function apagarPessoa(pessoa) {
