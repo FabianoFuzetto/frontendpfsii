@@ -317,9 +317,8 @@ export default function FormPessoa(props) {
               </Form.Control.Feedback>
             </Form.Group>
           </Col>
-          <Col className="col-2 mb-4">
-          <Row>
-          {/* ... existing code ... */}
+
+                 
           <Col className="col-2 mb-4">
             <div>
               <label htmlFor="inputFuncao" className="form-label">
@@ -356,12 +355,14 @@ export default function FormPessoa(props) {
               </div>
             </div>
           </Col>
-          {/* ... existing code ... */}
+          
           <div className="d-flex justify-content-end mb-2 mt-5">
             
           </div>
-        </Row>
-          </Col>
+                 
+                   
+
+
           <Col className="col-2">
             <Form.Group>
               <Form.Control.Feedback type="invalid">
