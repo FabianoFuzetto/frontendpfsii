@@ -167,7 +167,7 @@ export default function FormPessoa(props) {
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
                 <option value="Outro">Outro</option>
-              </Form.Select>
+              </Form.Select> 
             </Form.Group>
           </Col>
           <Col className="col-3 my-3">
