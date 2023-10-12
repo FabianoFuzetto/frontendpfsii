@@ -56,7 +56,7 @@ export default function FormPessoa(props) {
         funcoes: pessoa.funcoes.map((funcao) => funcao.idCargo)
       };
 
-      fetch("https://129.146.68.51/aluno14-pfsii/funcao", {
+      fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
         method: method,
         headers: {
           "Content-Type": "application/json"
