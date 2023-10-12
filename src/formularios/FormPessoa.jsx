@@ -52,6 +52,7 @@ export default function FormPessoa(props) {
       // Criando o objeto 'dados' para envio
       const dados = {
         ...pessoa,
+        dataNasc: moment(pessoa.dataNasc).format("YYYY-MM-DD"), // Formate a data aqui
         funcoes: pessoa.funcoes.map((funcao) => funcao.idCargo)
       };
 
@@ -100,6 +101,7 @@ export default function FormPessoa(props) {
         console.error("Erro ao obter funções:", erro);
       });
   }, []);
+
 
   return (
     <>
