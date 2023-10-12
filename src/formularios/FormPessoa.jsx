@@ -49,19 +49,12 @@ export default function FormPessoa(props) {
       const url = `https://129.146.68.51/aluno14-pfsii/pessoa${props.atualizando ? `/${pessoa.id}` : ''}`;
       const method = props.atualizando ? "PUT" : "POST";
 
-      // Criando o objeto 'dados' para envio
-      const dados = {
-        ...pessoa,
-        dataNasc: moment(pessoa.dataNasc).format("YYYY-MM-DD"), // Formate a data aqui
-        funcoes: pessoa.funcoes.map((funcao) => funcao.idCargo)
-      };
-
-      fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
+      fetch(url, {
         method: method,
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(dados) // Enviando 'dados' em vez de 'pessoa'
+        body: JSON.stringify(pessoa)
       })
         .then((resposta) => resposta.json())
         .then((dados) => {
@@ -101,7 +94,6 @@ export default function FormPessoa(props) {
         console.error("Erro ao obter funções:", erro);
       });
   }, []);
-
 
   return (
     <>
