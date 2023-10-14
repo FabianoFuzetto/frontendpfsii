@@ -75,8 +75,8 @@ export default function FormPessoa(props) {
           }
         })
         .catch((erro) => {
-          console.error("Erro ao executar a requisição:", erro);
-          window.alert("Erro ao executar a requisição:" + erro.message);
+          console.error("Erro Front:", erro);
+          window.alert("Erro ao Front:" + erro.message);
         });
   
       setValidado(false);

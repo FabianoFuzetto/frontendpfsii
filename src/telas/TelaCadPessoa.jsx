@@ -26,6 +26,7 @@ export default function TelaCadPessoa(props) {
       email: "",
       celular: ""
       
+      
     });
 
   function prepararParaEdicao(pessoa) {
