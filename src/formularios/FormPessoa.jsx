@@ -48,7 +48,7 @@ export default function FormPessoa(props) {
     if (form.checkValidity()) {
       const url = `https://129.146.68.51/aluno14-pfsii/pessoa${props.atualizando ? `/${pessoa.id}` : ''}`;
       const method = props.atualizando ? "PUT" : "POST";
-
+  
       fetch(url, {
         method: method,
         headers: {
@@ -56,7 +56,12 @@ export default function FormPessoa(props) {
         },
         body: JSON.stringify(pessoa)
       })
-        .then((resposta) => resposta.json())
+        .then((resposta) => {
+          if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
+          }
+          return resposta.json();
+        })
         .then((dados) => {
           if (dados.status) {
             props.setModoEdicao(false);
@@ -65,13 +70,15 @@ export default function FormPessoa(props) {
             props.setPessoa(novaLista);
             props.exibirTabela(true);
             window.location.reload();
+          } else {
+            window.alert(dados.mensagem);
           }
-          window.alert(dados.mensagem);
         })
         .catch((erro) => {
+          console.error("Erro ao executar a requisição:", erro);
           window.alert("Erro ao executar a requisição:" + erro.message);
         });
-
+  
       setValidado(false);
     } else {
       setValidado(true);
