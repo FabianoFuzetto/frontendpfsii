@@ -24,7 +24,7 @@ export default function FormPessoa(props) {
   }
 
   function adicionarFuncao() {
-    const selectedRoleId = document.getElementById("cargo_id").value;
+    const selectedRoleId = document.getElementById("idCargo").value;
     const selectedRole = funcoes.find((funcao) => funcao.idCargo === parseInt(selectedRoleId, 10));
 
     if (selectedRole && !pessoa.funcoes.some((role) => role.idCargo === selectedRole.idCargo)) {
@@ -330,7 +330,7 @@ export default function FormPessoa(props) {
     <label htmlFor="inputFuncao" className="form-label">
       Função:
     </label>
-    <Form.Select id="cargo_id" className="form-control" required onChange={manipularMudanca}>
+    <Form.Select id="idCargo" className="form-control" required onChange={manipularMudanca}>
       <option value="">Selecione</option>
       {funcoes.map((funcao) => (
         <option key={funcao.idCargo} value={funcao.idCargo}>
