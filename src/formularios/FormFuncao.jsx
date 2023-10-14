@@ -98,7 +98,7 @@ export default function FormFuncao(props) {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>
-                    <Col>
+                    <Col> 
                         <Form.Group as={Col} md="12">
                             <Form.Label>Nome do Cargo:</Form.Label>
                             <Form.Control
