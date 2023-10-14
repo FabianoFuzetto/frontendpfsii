@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
-export default function FormFuncao(props) {
+export default function FormFuncao(props) { 
 
     const [validado, setValidado] = useState(false);
     const [funcao, setFuncao] = useState(props.funcao);
