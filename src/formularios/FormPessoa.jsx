@@ -30,7 +30,7 @@ export default function FormPessoa(props) {
     if (selectedRole && !pessoa.funcoes.some((role) => role.idCargo === selectedRole.idCargo)) {
       setPessoa({
         ...pessoa,
-        funcoes: [...pessoa.funcoes, selectedRole]
+        funcoes: [...pessoa.funcoes, { idCargo: selectedRole.idCargo, funcaomembro: selectedRole.funcaomembro }]
       });
     }
   }
@@ -166,7 +166,6 @@ export default function FormPessoa(props) {
                 <option value="">Selecione</option>
                 <option value="F">Feminino</option>
                 <option value="M">Masculino</option>
-                <option value="Outro">Outro</option>
               </Form.Select> 
             </Form.Group>
           </Col>
@@ -320,41 +319,41 @@ export default function FormPessoa(props) {
 
                  
           <Col className="col-2 mb-4">
-            <div>
-              <label htmlFor="inputFuncao" className="form-label">
-                Função:
-              </label>
-              <Form.Select id="cargo_id" className="form-control" required>
-                <option value="">Selecione</option>
-                {funcoes.map((funcao) => (
-                  <option key={funcao.idCargo} value={funcao.idCargo}>
-                    {funcao.funcaomembro}
-                  </option>
-                ))}
-              </Form.Select>
-              <Button
-                variant="btn btn-outline-primary mt-2"
-                type="button"
-                onClick={adicionarFuncao}
-              >
-                Adicionar Função
-              </Button>
-              <div className="mt-2">
-                {pessoa.funcoes.map((role) => (
-                  <div key={role.idCargo}>
-                    {role.funcaomembro}{" "}
-                    <Button
-                      variant="btn btn-outline-danger btn-sm"
-                      type="button"
-                      onClick={() => removerFuncao(role.idCargo)}
-                    >
-                      Remover
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Col>
+  <div>
+    <label htmlFor="inputFuncao" className="form-label">
+      Função:
+    </label>
+    <Form.Select id="cargo_id" className="form-control" required onChange={manipularMudanca}>
+      <option value="">Selecione</option>
+      {funcoes.map((funcao) => (
+        <option key={funcao.idCargo} value={funcao.idCargo}>
+          {funcao.funcaomembro}
+        </option>
+      ))}
+    </Form.Select>
+    <Button
+      variant="btn btn-outline-primary mt-2"
+      type="button"
+      onClick={adicionarFuncao}
+    >
+      Adicionar Função
+    </Button>
+    <div className="mt-2">
+      {pessoa.funcoes.map((role) => (
+        <div key={role.idCargo}>
+          {role.funcaomembro}{" "}
+          <Button
+            variant="btn btn-outline-danger btn-sm"
+            type="button"
+            onClick={() => removerFuncao(role.idCargo)}
+          >
+            Remover
+          </Button>
+        </div>
+      ))}
+    </div>
+  </div>
+</Col>
           
           <div className="d-flex justify-content-end mb-2 mt-5">
             
