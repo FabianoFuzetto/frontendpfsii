@@ -33,7 +33,7 @@ export default function FormPessoa(props) {
         funcoes: [...pessoa.funcoes, { idCargo: selectedRole.idCargo, funcaomembro: selectedRole.funcaomembro }]
       });
     }
-  }
+  } 
 
   function removerFuncao(idCargo) {
     const updatedRoles = pessoa.funcoes.filter((role) => role.idCargo !== idCargo);
