@@ -17,11 +17,11 @@ export default function Menu(props) {
             <NavDropdown title="Cadastros" id="basic-nav-dropdown">
               <div>
                 <LinkContainer to="/patrimonios">
-                  <NavDropdown.Item>Patrimônio</NavDropdown.Item>
+                  <NavDropdown.Item>Patrimônios</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Divider />
                 <LinkContainer to="/categoria">
-                  <NavDropdown.Item>Tipo de Patrimônio</NavDropdown.Item>
+                  <NavDropdown.Item>Tipo de Patrimônios</NavDropdown.Item>
                 </LinkContainer>
                 <NavDropdown.Divider />
                 <LinkContainer to="/pessoa">
