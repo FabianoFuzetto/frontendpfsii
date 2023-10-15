@@ -63,7 +63,7 @@ export default function FormPessoa(props) {
           return resposta.json();
         })
         .then((dados) => {
-          if (dados.status) {
+          if (dados.status) { 
             props.setModoEdicao(false);
             let novaLista = props.listaPessoa;
             novaLista.push(pessoa);
