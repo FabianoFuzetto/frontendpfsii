@@ -69,7 +69,7 @@ export default function FormPessoa(props) {
             novaLista.push(pessoa);
             props.setPessoa(novaLista);
             props.exibirTabela(true);
-            window.location.reload();
+            //window.location.reload();
           } else {
             window.alert(dados.mensagem);
           }
