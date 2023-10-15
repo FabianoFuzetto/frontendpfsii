@@ -36,7 +36,7 @@ export default function FormFuncao(props) {
                             novaLista.push(funcao);
                             props.setFuncao(novaLista);
                             props.exibirTabela(true);
-                            //window.location.reload()
+                            //window.location.reload() 
                         }
                         window.alert(dados.mensagem);
                     })
