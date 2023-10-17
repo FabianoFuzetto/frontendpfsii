@@ -1,145 +1,49 @@
-import Pagina from "../templates/Pagina";
-import FormPessoa from "../formularios/FormPessoa.jsx";
-import TabelaPessoa from "../tabelas/TabelaPessoa.jsx";
-import { useState, useEffect } from "react";
-import { Alert, Container, Button } from "react-bootstrap"; 
-
- 
-export default function TelaCadPessoa(props) {
-  const [exibirTabela, setExibirTabela] = useState(true);
-  const [pessoas, setPessoa] = useState([]);
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { FaHome, FaSignOutAlt } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 
-  const [funcoesEPessoas, setFuncoesEPessoas] = useState([]);
-
-  const [modoEdicao, setModoEdicao] = useState(false);
-  const [atualizando, setAtualizando] = useState(false);
-  const [PessoaEmEdicao, setPessoaEmEdicao] = useState(
-    {
-
-      cpf: "",
-      nome: "",
-      dataNasc: "",
-      genero: "",
-      endereco: "",
-      cidade: "",
-      bairro: "",
-      uf: "",
-      cep: "",
-      email: "",
-      celular: ""
-      
-      
-    });
-
-  function prepararParaEdicao(pessoa) {
-    setAtualizando(true);
-    setPessoaEmEdicao(pessoa);
-    setExibirTabela(false); 
-  }
-
-  function apagarPessoa(pessoa) {
-    fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(pessoa),
-    })
-      .then((resposta) => {
-        if (resposta.ok) {
-          const listaAtualizada = pessoas.filter(
-            (item) => item.cpf !== pessoa.cpf
-          );
-          setPessoa(listaAtualizada);
-          alert("Pessoa excluída com sucesso");
-        } else {
-          alert("Não foi possível excluir essa pessoa");
-        }
-      })
-      .catch((erro) => {
-        alert("Erro ao executar essa requisição: " + erro.message);
-      });
-  }
-
-  useEffect(() => {
-   
-    fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
-      method: "GET",
-    })
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-       
-        if (Array.isArray(dados)) {
-          
-          setPessoa(dados);
-        }
-      })
-      .catch((erro) => {
-        console.error("Erro ao obter os pessoas:", erro);
-      });
-  }, []);
-
-
- const buscarFuncoesEPessoas = () => {
-    fetch("https://129.146.68.51/aluno14-pfsii/pessoa_funcao", {
-      method: "GET",
-    })
-      .then((resposta) => resposta.json())
-      .then((dados) => {
-        if (Array.isArray(dados)) {
-          setFuncoesEPessoas(dados);
-          setExibirTabela(false);
-        }
-      })
-      .catch((erro) => {
-        console.error("Erro ao obter as funções e pessoas:", erro);
-      });
-  };
-
-
-
-
-
-
+export default function Menu(props) {
   return (
-    <Pagina>
+    <Navbar bg="success" variant="dark" expand="lg">
       <Container>
-        <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
-
- <div className="text-center">
-          <Button variant="primary" onClick={buscarFuncoesEPessoas}>
-            Veja os Membros e Cargos já Cadastrados
-          </Button>
+        <div>
+          <Link to="/" > <FaHome title="Página Inicial" style={{ cursor: 'pointer' }} size={30} color="white" /></Link>
         </div>
-
-        {
-          exibirTabela ?
-            <TabelaPessoa listaPessoa={pessoas}
-              setPessoa={setPessoa}
-              exibirTabela={setExibirTabela}
-              editarpessoa={prepararParaEdicao}
-              excluirpesssoa={apagarPessoa} />
-            :
-
-            <div>
-            <h3>Pessoa e Cargo</h3>
-            <ul>
-              {funcoesEPessoas.map((item) => (
-                <li key={item.id}>{item.id_pessoa} - {item.idCargo}</li>
-              ))}
-            </ul>
-
-            <FormPessoa
-              listaPessoa={pessoas}
-              setPessoa={setPessoa}
-              exibirTabela={setExibirTabela}
-              modoEdicao={modoEdicao}
-              setModoEdicao={setModoEdicao}
-              atualizando={atualizando}
-              pessoa={PessoaEmEdicao}
-            />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown title="Cadastros" id="basic-nav-dropdown">
+              <div>
+                <LinkContainer to="/patrimonios">
+                  <NavDropdown.Item>Patrimônios</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Divider />
+                <LinkContainer to="/categoria">
+                  <NavDropdown.Item>Tipo de Patrimônios</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Divider />
+                <LinkContainer to="/pessoa">
+                  <NavDropdown.Item>Pessoas</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Divider />
+                <LinkContainer to="/funcao">
+                  <NavDropdown.Item>Cargos</NavDropdown.Item>
+                </LinkContainer>
+                
+               
+              </div>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+        <Nav >
+          <div>
+            <FaSignOutAlt title="Sair" style={{ cursor: 'pointer' }} size={20} color="white"/>
           </div>
-        }
+        </Nav>
       </Container>
-    </Pagina>
+    </Navbar>
   );
 }
+
