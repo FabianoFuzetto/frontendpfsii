@@ -2,40 +2,35 @@ import Pagina from "../templates/Pagina";
 import FormPessoa from "../formularios/FormPessoa.jsx";
 import TabelaPessoa from "../tabelas/TabelaPessoa.jsx";
 import { useState, useEffect } from "react";
-import { Alert, Container } from "react-bootstrap"; 
-
+import { Alert, Container, Button } from "react-bootstrap"; 
 
 export default function TelaCadPessoa(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
   const [pessoas, setPessoa] = useState([]);
-
+  const [funcoesEPessoas, setFuncoesEPessoas] = useState([]); 
   const [modoEdicao, setModoEdicao] = useState(false);
   const [atualizando, setAtualizando] = useState(false);
-  const [PessoaEmEdicao, setPessoaEmEdicao] = useState(
-    {
+  const [PessoaEmEdicao, setPessoaEmEdicao] = useState({
+    cpf: "",
+    nome: "",
+    dataNasc: "",
+    genero: "",
+    endereco: "",
+    cidade: "",
+    bairro: "",
+    uf: "",
+    cep: "",
+    email: "",
+    celular: ""
+  });
 
-      cpf: "",
-      nome: "",
-      dataNasc: "",
-      genero: "",
-      endereco: "",
-      cidade: "",
-      bairro: "",
-      uf: "",
-      cep: "",
-      email: "",
-      celular: ""
-      
-      
-    });
-
-  function prepararParaEdicao(pessoa) {
+  const prepararParaEdicao = (pessoa) => {
     setAtualizando(true);
     setPessoaEmEdicao(pessoa);
     setExibirTabela(false); 
-  }
+  };
 
-  function apagarPessoa(pessoa) {
+  const apagarPessoa = (pessoa) => {
     fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -55,18 +50,31 @@ export default function TelaCadPessoa(props) {
       .catch((erro) => {
         alert("Erro ao executar essa requisição: " + erro.message);
       });
-  }
+  };
+
+  const buscarFuncoesEPessoas = () => {
+    fetch("https://129.146.68.51/aluno14-pfsii/pessoa_funcao", {
+      method: "GET",
+    })
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        if (Array.isArray(dados)) {
+          setFuncoesEPessoas(dados);
+          setExibirTabela(false);
+        }
+      })
+      .catch((erro) => {
+        console.error("Erro ao obter as funções e pessoas:", erro);
+      });
+  };
 
   useEffect(() => {
-    debugger
     fetch("https://129.146.68.51/aluno14-pfsii/pessoa", {
       method: "GET",
     })
       .then((resposta) => resposta.json())
       .then((dados) => {
-       
         if (Array.isArray(dados)) {
-          
           setPessoa(dados);
         }
       })
@@ -75,28 +83,43 @@ export default function TelaCadPessoa(props) {
       });
   }, []);
 
-
   return (
     <Pagina>
       <Container>
         <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
 
-        {
-          exibirTabela ?
-            <TabelaPessoa listaPessoa={pessoas}
-              setPessoa={setPessoa}
-              exibirTabela={setExibirTabela}
-              editarpessoa={prepararParaEdicao}
-              excluirpesssoa={apagarPessoa} />
-            :
-            <FormPessoa listaPessoa={pessoas}
+        <Button variant="primary" onClick={buscarFuncoesEPessoas}>
+          Veja as funções
+        </Button>
+
+        {exibirTabela ? (
+          <TabelaPessoa
+            listaPessoa={pessoas}
+            setPessoa={setPessoa}
+            exibirTabela={setExibirTabela}
+            editarpessoa={prepararParaEdicao}
+            excluirpesssoa={apagarPessoa}
+          />
+        ) : (
+          <div>
+            <h3>Funções e Pessoas</h3>
+            <ul>
+              {funcoesEPessoas.map((item) => (
+                <li key={item.id}>{item.nome_funcao} - {item.nome_pessoa}</li>
+              ))}
+            </ul>
+
+            <FormPessoa
+              listaPessoa={pessoas}
               setPessoa={setPessoa}
               exibirTabela={setExibirTabela}
               modoEdicao={modoEdicao}
               setModoEdicao={setModoEdicao}
               atualizando={atualizando}
-              pessoa={PessoaEmEdicao} />
-        }
+              pessoa={PessoaEmEdicao}
+            />
+          </div>
+        )}
       </Container>
     </Pagina>
   );
