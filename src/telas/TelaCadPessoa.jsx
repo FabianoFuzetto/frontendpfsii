@@ -88,8 +88,11 @@ export default function TelaCadPessoa(props) {
       <Container>
         <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
 
-        <Button variant="primary" onClick={buscarFuncoesEPessoas}>
-          Veja as funções
+       
+      </Container>
+
+      <Button variant="primary" onClick={buscarFuncoesEPessoas}>
+          Aqui
         </Button>
 
         {exibirTabela ? (
@@ -102,7 +105,7 @@ export default function TelaCadPessoa(props) {
           />
         ) : (
           <div>
-            <h3>Funções e Pessoas</h3>
+            <h3>Veja os Membros e Funções</h3>
             <ul>
               {funcoesEPessoas.map((item) => (
                 <li key={item.id}>{item.id_pessoa} - {item.idCargo}</li>
@@ -120,7 +123,6 @@ export default function TelaCadPessoa(props) {
             />
           </div>
         )}
-      </Container>
     </Pagina>
   );
 }
