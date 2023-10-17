@@ -6,7 +6,7 @@ export default function Tela404(props) {
     return (
         <Pagina>
             
-            <img className="d-block w-100 shadow-lg  rounded " src={frontalslide1} alt="Primeiro slide" />  
+            <img className="d-block w-100 shadow-lg  rounded mt-4 " src={frontalslide1} alt="Primeiro slide" />  
            
         </Pagina>
     );
