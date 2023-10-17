@@ -82,7 +82,7 @@ export default function TelaCadPessoa(props) {
         console.error("Erro ao obter os pessoas:", erro);
       });
   }, []);
-
+ 
   return (
     <Pagina>
       <Container>
