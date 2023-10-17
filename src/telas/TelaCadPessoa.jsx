@@ -105,7 +105,7 @@ export default function TelaCadPessoa(props) {
             <h3>Funções e Pessoas</h3>
             <ul>
               {funcoesEPessoas.map((item) => (
-                <li key={item.id}>{item.nome_funcao} - {item.nome_pessoa}</li>
+                <li key={item.id}>{item.id_pessoa} - {item.idCargo}</li>
               ))}
             </ul>
 
