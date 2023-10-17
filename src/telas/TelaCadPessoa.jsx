@@ -79,7 +79,7 @@ export default function TelaCadPessoa(props) {
         }
       })
       .catch((erro) => {
-        console.error("Erro ao obter os pessoas:", erro); 
+        console.error("Erro ao obter os pessoas:", erro);
       });
   }, []);
 
@@ -88,13 +88,11 @@ export default function TelaCadPessoa(props) {
       <Container>
         <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
 
-        <Button
-          variant="primary"
-          onClick={buscarFuncoesEPessoas}
-          className="d-flex justify-content-center align-items-center"
-        >
-          Veja os Membros e Funções Aqui
-        </Button>
+        <div className="text-center">
+          <Button variant="primary" onClick={buscarFuncoesEPessoas}>
+            Veja os Membros e Cargos já Cadastrados
+          </Button>
+        </div>
 
         {exibirTabela ? (
           <TabelaPessoa
