@@ -2,12 +2,12 @@ import Pagina from "../templates/Pagina";
 import FormPessoa from "../formularios/FormPessoa.jsx";
 import TabelaPessoa from "../tabelas/TabelaPessoa.jsx";
 import { useState, useEffect } from "react";
-import { Alert, Container, Button } from "react-bootstrap"; 
+import { Alert, Container, Button } from "react-bootstrap";
 
 export default function TelaCadPessoa(props) {
   const [exibirTabela, setExibirTabela] = useState(true);
   const [pessoas, setPessoa] = useState([]);
-  const [funcoesEPessoas, setFuncoesEPessoas] = useState([]); 
+  const [funcoesEPessoas, setFuncoesEPessoas] = useState([]);
   const [modoEdicao, setModoEdicao] = useState(false);
   const [atualizando, setAtualizando] = useState(false);
   const [PessoaEmEdicao, setPessoaEmEdicao] = useState({
@@ -27,7 +27,7 @@ export default function TelaCadPessoa(props) {
   const prepararParaEdicao = (pessoa) => {
     setAtualizando(true);
     setPessoaEmEdicao(pessoa);
-    setExibirTabela(false); 
+    setExibirTabela(false);
   };
 
   const apagarPessoa = (pessoa) => {
@@ -82,13 +82,17 @@ export default function TelaCadPessoa(props) {
         console.error("Erro ao obter os pessoas:", erro);
       });
   }, []);
- 
+
   return (
     <Pagina>
       <Container>
         <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
 
-        <Button variant="primary" onClick={buscarFuncoesEPessoas}>
+        <Button
+          variant="primary"
+          onClick={buscarFuncoesEPessoas}
+          className="d-flex justify-content-center align-items-center"
+        >
           Veja os Membros e Funções Aqui
         </Button>
 
