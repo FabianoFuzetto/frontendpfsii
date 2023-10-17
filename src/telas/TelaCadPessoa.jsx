@@ -107,7 +107,7 @@ export default function TelaCadPessoa(props) {
             <h3 className="text-center">Pessoa e Cargo</h3>
             <ul className="text-center">
               {funcoesEPessoas.map((item) => (
-                <li className="text-center" key={item.id}>{item.id_pessoa} - {item.idCargo}</li>
+                <li key={item.id}>{item.id_pessoa} - {item.idCargo}</li>
               ))}
             </ul>
 
