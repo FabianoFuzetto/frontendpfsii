@@ -94,7 +94,7 @@ export default function TelaCadPessoa(props) {
           </Button>
         </div>
 
-        {exibirTabela ? (
+        {exibirTabela ? ( 
           <TabelaPessoa
             listaPessoa={pessoas}
             setPessoa={setPessoa}
