@@ -345,11 +345,11 @@ export default function FormPessoa(props) {
     >
       Adicionar Função
     </Button>
-    <div className="mt-2">
+    <div className="mt-3">
       {pessoa.funcoes.map((role) => (
         <div key={role.idCargo}>
           {role.funcaomembro}{" "}
-          <Button
+          <Button className="mt-3"
             variant="btn btn-outline-danger btn-sm"
             type="button"
             onClick={() => removerFuncao(role.idCargo)}
