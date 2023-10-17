@@ -1,7 +1,7 @@
 {
   "name": "meuprimeiroappreact",
   "version": "0.1.0",
-  "homepage": "https://FabianoFuzetto.github.io/frontendpfsii",  
+  "homepage": "https://FabianoFuzetto.github.io/frontendpfsii",   
   "private": true,
   "dependencies": { 
     "@fortawesome/free-solid-svg-icons": "^6.4.0", 
