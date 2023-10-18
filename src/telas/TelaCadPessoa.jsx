@@ -106,7 +106,7 @@ export default function TelaCadPessoa(props) {
         <Alert variant={"secondary"} className="text-center m-2 shadow-sm mb-4 rounded">Cadastro de Pessoas</Alert>
 
  <div className="text-center">
-          <Button variant="primary" onClick={buscarFuncoesEPessoas}>
+          <Button variant="success" onClick={buscarFuncoesEPessoas}>
             Veja os Membros e Cargos já Cadastrados
           </Button>
         </div>

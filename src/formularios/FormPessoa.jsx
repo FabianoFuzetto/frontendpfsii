@@ -8,7 +8,7 @@ export default function FormPessoa(props) {
   const [pessoa, setPessoa] = useState({
     ...props.pessoa,
     dataNasc: moment(props.pessoa.dataNasc).format("YYYY-MM-DD"),
-    funcoes: [] // Array to store multiple roles
+    funcoes: [] //Array para armazenar múltiplas funções
   });
   const [funcoes, setFuncoes] = useState([]);
 
