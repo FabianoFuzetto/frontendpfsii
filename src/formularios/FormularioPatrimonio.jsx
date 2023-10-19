@@ -37,7 +37,7 @@ export default function FormularioPatrimonio(props) {
         .then((dados) => {
           if (dados && dados.status) {
             props.exibirTabela(true);
-            //window.location.reload();
+            window.location.reload();
           } else {
             window.alert(dados && dados.mensagem);
           }
@@ -60,7 +60,7 @@ export default function FormularioPatrimonio(props) {
           if (dados.status) {
             props.setmodoEdicao(false);
             props.exibirTabela(true);
-            //window.location.reload();
+            window.location.reload();
           }
           window.alert(dados.mensagem);
         })

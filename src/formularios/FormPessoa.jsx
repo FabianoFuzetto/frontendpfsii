@@ -76,7 +76,7 @@ export default function FormPessoa(props) {
         })
         .catch((erro) => {
           console.error("Erro Front:", erro);
-          window.alert("Erro ao Front:" + erro.message);
+          //window.alert("Erro ao Front:" + erro.message);
         });
   
       setValidado(false);
