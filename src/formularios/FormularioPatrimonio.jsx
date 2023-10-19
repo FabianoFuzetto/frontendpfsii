@@ -60,7 +60,7 @@ export default function FormularioPatrimonio(props) {
           if (dados.status) {
             props.setmodoEdicao(false);
             props.exibirTabela(true);
-            window.location.reload();
+            //window.location.reload();
           }
           window.alert(dados.mensagem);
         })
