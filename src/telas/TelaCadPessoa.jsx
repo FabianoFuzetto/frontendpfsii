@@ -107,7 +107,7 @@ export default function TelaCadPessoa(props) {
 
  <div className="text-center">
           <Button variant="success" onClick={buscarFuncoesEPessoas}>
-            Veja os Membros e Cargos já Cadastrados
+             Veja Cargos já Cadastrados N:N
           </Button>
         </div>
 
